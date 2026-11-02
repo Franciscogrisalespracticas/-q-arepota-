@@ -1,0 +1,58 @@
+[
+  {
+    "id": "hamburguesa",
+    "source": "https://www.pexels.com/video/hands-preparing-hamburger-12282853/",
+    "videoId": "12282853",
+    "author": "Pilan Filmes",
+    "description": "Cocina real: manos preparando una hamburguesa gourmet. Video ilustrativo.",
+    "exactProduct": false
+  },
+  {
+    "id": "chuzo",
+    "source": "https://www.pexels.com/video/a-person-flipping-meat-in-skewers-on-a-flat-top-griddle-7008584/",
+    "videoId": "7008584",
+    "author": "Anna Tarazevich",
+    "description": "Cocina real: pinchos volteados sobre plancha plana. No muestra el acompanamiento final.",
+    "exactProduct": false
+  },
+  {
+    "id": "arepa-pollo",
+    "source": "https://www.pexels.com/video/freshly-grilled-arepas-on-hot-griddle-37232230/",
+    "videoId": "37232230",
+    "author": "Cristina Cespedes",
+    "description": "Cocina real: arepas colombianas en plancha; la foto final muestra el relleno.",
+    "exactProduct": false
+  },
+  {
+    "id": "pollo-desmechado",
+    "source": "https://www.pexels.com/video/person-taking-shredded-meat-from-a-pan-5528176/",
+    "videoId": "5528176",
+    "author": "sadiq Padela",
+    "description": "Cocina real: manipulacion de pollo desmechado caliente con pinzas.",
+    "exactProduct": false
+  },
+  {
+    "id": "perro",
+    "source": "https://www.pexels.com/video/artisan-hot-dog-with-gourmet-sauces-40426481/",
+    "videoId": "40426481",
+    "author": "Andrei Diachenko",
+    "description": "Cocina real: preparacion de perro caliente con salsas gourmet.",
+    "exactProduct": false
+  },
+  {
+    "id": "salchipapa",
+    "source": "https://www.pexels.com/video/fries-on-plates-13253647/",
+    "videoId": "13253647",
+    "author": "Arshan Ali",
+    "description": "Cocina real: papas servidas en plato. Es un video relacionado, no la receta exacta.",
+    "exactProduct": false
+  },
+  {
+    "id": "butifarras",
+    "source": "https://www.pexels.com/video/sizzling-sausages-cooking-in-a-pan-36003039/",
+    "videoId": "36003039",
+    "author": "IslandHopper X",
+    "description": "Cocina real: salchichas pequenas en sarten. Video contextual; no son butifarras colombianas identificadas.",
+    "exactProduct": false
+  }
+]

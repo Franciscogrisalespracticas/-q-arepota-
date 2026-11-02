@@ -1,0 +1,31 @@
+const fs=require('fs'),path=require('path'),vm=require('vm');
+let ts;try{ts=require('typescript');}catch(e){ts=require('/opt/nvm/versions/node/v22.16.0/lib/node_modules/typescript');}
+const root=path.resolve(__dirname,'..');let problems=[];
+const assert=(condition,label)=>{if(!condition)problems.push(label);else console.log('PASS',label);};
+const names=['App.tsx','catalog.ts','motion.ts','real-video.tsx','main.tsx','three-experience.ts'];
+for(const name of names){let f=path.join(root,'src',name),content=fs.readFileSync(f,'utf8'),sf=ts.createSourceFile(name,content,ts.ScriptTarget.Latest,true,name.endsWith('tsx')?ts.ScriptKind.TSX:ts.ScriptKind.TS);assert(sf.parseDiagnostics.length===0,'TS syntax '+name);}
+const cat=fs.readFileSync(path.join(root,'src/catalog.ts'),'utf8').replace(/export /g,'');
+const js=ts.transpileModule(cat,{compilerOptions:{target:ts.ScriptTarget.ES2020,module:ts.ModuleKind.None}}).outputText;
+const ctx={window:{location:{protocol:'http:',pathname:'/'}}};
+const list=vm.runInNewContext(js+'\nPRODUCTS;',ctx);
+assert(list.length===7,'seven distinct products');
+assert(new Set(list.map(x=>x.id)).size===7,'unique product IDs');
+assert(list.every(x=>x.name&&x.ingredients.length>=3&&x.price>0),'descriptions, ingredients, positive demo prices');
+assert(list.some(x=>x.id==='butifarras')&&!list.some(x=>x.id==='empanadas'),'butifarras replace empanadas');
+assert(list.every(x=>x.videoId&&x.videoPage.startsWith('https://www.pexels.com/video/')),'each product includes a real stock video reference');
+assert(list.every(x=>fs.existsSync(path.join(root,'public',x.image.replace(/^\//,'')))),'seven local product images');
+const sources=JSON.parse(fs.readFileSync(path.join(root,'VIDEO_SOURCES.json'),'utf8'));
+assert(sources.length===7,'seven video sources');
+assert(new Set(sources.map(x=>x.videoId)).size===7,'seven unique video IDs');
+assert(sources.every(x=>x.source.startsWith('https://www.pexels.com/video/')),'sources point to Pexels video pages');
+const manifest=JSON.parse(fs.readFileSync(path.join(root,'public/assets/video/manifest.json'),'utf8'));
+assert(manifest.every(id=>fs.existsSync(path.join(root,'public/assets/video',id+'.mp4'))),'local video manifest only lists files included');
+assert(fs.existsSync(path.join(root,'preview/app.preview.js')),'offline preview JavaScript exists');
+assert(fs.existsSync(path.join(root,'public/vendor/react.production.min.js'))&&fs.existsSync(path.join(root,'public/vendor/react-dom.production.min.js')),'offline React runtime exists');
+assert(fs.existsSync(path.join(root,'public/config.js')),'store configuration exists');
+assert(fs.existsSync(path.join(root,'start.bat')),'Windows launcher exists');
+const cache=fs.readFileSync(path.join(root,'preview/app.preview.js'),'utf8');
+assert(cache.includes('class App extends React.Component'),'same React class compiled in offline preview');
+assert(cache.includes('FilmMedia')&&cache.includes('whatsapp')&&cache.includes('drawer'),'preview contains interactions and ordering logic');
+console.log(problems.length?'\nFAILED: '+problems.join('; '):'\nALL OFFLINE SOURCE CHECKS PASSED');
+if(problems.length)process.exitCode=1;

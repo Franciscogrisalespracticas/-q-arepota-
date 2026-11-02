@@ -1,0 +1,25 @@
+Offline preview compiled, app size 48578 chars
+PASS TS syntax App.tsx
+PASS TS syntax catalog.ts
+PASS TS syntax motion.ts
+PASS TS syntax real-video.tsx
+PASS TS syntax main.tsx
+PASS TS syntax three-experience.ts
+PASS seven distinct products
+PASS unique product IDs
+PASS descriptions, ingredients, positive demo prices
+PASS butifarras replace empanadas
+PASS each product includes a real stock video reference
+PASS seven local product images
+PASS seven video sources
+PASS seven unique video IDs
+PASS sources point to Pexels video pages
+PASS local video manifest only lists files included
+PASS offline preview JavaScript exists
+PASS offline React runtime exists
+PASS store configuration exists
+PASS Windows launcher exists
+PASS same React class compiled in offline preview
+PASS preview contains interactions and ordering logic
+
+ALL OFFLINE SOURCE CHECKS PASSED
