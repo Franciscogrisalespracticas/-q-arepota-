@@ -3,7 +3,7 @@ export type Product = {
  price:number; image:string; effect:string; tag:string; videoDescription:string;
  videoId:string; videoPage:string;
 };
-export const assetBase=(window.location.protocol==='file:'||window.location.pathname.includes('/preview/'))?'../assets':'/assets';
+export const assetBase=(window.location.protocol==='file:'||window.location.pathname.includes('/preview/'))?'../assets':`${import.meta.env.BASE_URL.replace(/\/$/, '')}/assets`;
 export const PRODUCTS:Product[]=[
  {id:'hamburguesa',name:'Burger La Monumental',short:'DOBLE CARNE / QUESO / PLANCHA',description:'Doble carne preparada en plancha, queso fundido, cebolla caramelizada y salsa especial en pan dorado.',ingredients:['Doble carne de res','Queso cheddar','Cebolla caramelizada','Salsa de la casa'],price:29900,image:assetBase+'/images/hamburguesa.webp',effect:'burger',tag:'LA MAS PEDIDA',videoDescription:'Cocina real: manos preparando una hamburguesa gourmet. Video ilustrativo.',videoId:'12282853',videoPage:'https://www.pexels.com/video/hands-preparing-hamburger-12282853/'},
  {id:'chuzo',name:'Chuzo de Carne con Arepa',short:'CHUZO / PLANCHA / AREPA',description:'Pinchos de carne de res preparados en plancha y servidos con arepa colombiana dorada y salsa de la casa.',ingredients:['Carne de res','Arepa colombiana','Especias','Salsa de la casa'],price:24900,image:assetBase+'/images/chuzo.webp',effect:'steam',tag:'HECHO EN PLANCHA',videoDescription:'Cocina real: pinchos volteados sobre plancha plana. No muestra el acompanamiento final.',videoId:'7008584',videoPage:'https://www.pexels.com/video/a-person-flipping-meat-in-skewers-on-a-flat-top-griddle-7008584/'},
