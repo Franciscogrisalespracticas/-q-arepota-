@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview --host 0.0.0.0",
     "preview:offline": "node scripts/offline-server.cjs",
-    "test:offline": "node scripts/test-offline.cjs"
+    "test:offline": "node scripts/test-offline.cjs",
+    "build:pages": "tsc -b && vite build --mode github-pages"
   },
   "dependencies": {
     "react": "^19.2.0",
